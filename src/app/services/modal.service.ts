@@ -5,7 +5,9 @@ interface IModal {
   visible: boolean;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ModalService {
   private modals: IModal[] = [];
 
