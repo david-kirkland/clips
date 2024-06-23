@@ -12,7 +12,9 @@ export class ModalComponent implements OnInit {
   constructor(public modal: ModalService, public el: ElementRef) {}
 
   ngOnInit(): void {
-    document.body.appendChild(this.el.nativeElement);
+    if (typeof document !== 'undefined') {
+      document.body.appendChild(this.el.nativeElement);
+    }
   }
 
   closeModal() {

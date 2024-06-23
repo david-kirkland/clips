@@ -1,0 +1,32 @@
+<label class="inline-block mb-2">{{ label }}</label>
+<input
+  [dropSpecialCharacters]="false"
+  [formControl]="control"
+  [mask]="format"
+  [placeholder]="placeholder"
+  [type]="type"
+  class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+/>
+<div
+  *ngIf="control.invalid && control.touched && control.errors"
+  class="text-red-400"
+>
+  <p *ngIf="control.errors?.required">This field is required.</p>
+
+  <p *ngIf="control.errors?.pattern">
+    Passwords must be at least 8 characters long, contain 1 uppercase letter, 1
+    lowercase letter, 1 one number.
+  </p>
+
+  <p *ngIf="control.errors?.minlength">
+    Minimum length is
+    {{ control.errors.minlength.requiredLength }}
+    characters.
+  </p>
+
+  <p *ngIf="control.errors?.email">You must enter a valid email.</p>
+
+  <p *ngIf="control.errors?.min">Value too low.</p>
+
+  <p *ngIf="control.errors?.max">Value too high.</p>
+</div>
